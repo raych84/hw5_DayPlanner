@@ -1,9 +1,17 @@
+// Global variables
+let time = 0;
+let today = new Date();
+let date = today.getDate();
+// let input = document.querySelectorAll("#input");
+// let hour = document.querySelectorAll("#hour-block");
+
+
 $(document).ready(function () {
-	$("#save-event").on("click", function () {
+	$("button").on("click", function() {
+	
 		//Store data
 		var value = $(this).siblings("input").val();
 		var time = $(this).parent().attr("id");
-
 		localStorage.setItem(time, value);
 	});
 
@@ -18,13 +26,13 @@ $(document).ready(function () {
 		let currentHour = moment().hours();
 		// function for each class block to check if time is in the past, present or future
 		$(".hour-block").each(function () {
-			let timeBlock = parseInt($(this).attr("id"));
+			let timeBlock = parseInt($(this).attr("id").split("-")[1]);
 			// check if timeblock is in the past
 			if (timeBlock < currentHour) {
 				$(this).addClass("past");
 			}
 			// check if timeblock is in the present
-			else if (hour === currentHour) {
+			else if (timeBlock === currentHour) {
 				$(this).removeClass("past");
 				$(this).addClass("present");
 			}
@@ -40,17 +48,22 @@ $(document).ready(function () {
 
 	// Retrieve Data
 
-	$("#9a .description").val(localStorage.getItem("9a"));
-	$("#10a .description").val(localStorage.getItem("10a"));
-	$("#11a .description").val(localStorage.getItem("11a"));
-	$("#12p .description").val(localStorage.getItem("12p"));
-	$("#1p .description").val(localStorage.getItem("1p"));
-	$("#2p .description").val(localStorage.getItem("2p"));
-	$("#3p .description").val(localStorage.getItem("3p"));
-	$("#4p .description").val(localStorage.getItem("4p"));
-	$("#5p .description").val(localStorage.getItem("5p"));
-
-
+	$("#9a .form-control").val(localStorage.getItem("9a"));
+	$("#10a .form-control").val(localStorage.getItem("10a"));
+	$("#11a .form-control").val(localStorage.getItem("11a"));
+	$("#12p .form-control").val(localStorage.getItem("12p"));
+	$("#1p .form-control").val(localStorage.getItem("1p"));
+	$("#2p .form-control").val(localStorage.getItem("2p"));
+	$("#3p .form-control").val(localStorage.getItem("3p"));
+	$("#4p .form-control").val(localStorage.getItem("4p"));
+	$("#5p .form-control").val(localStorage.getItem("5p"));
+	// Change color of hour block
+	$("input").focus(function () {
+		$(this).css("background-color", "yellow");
+	});
+	$("input").blur(function () {
+		$(this).css("background-color", "pink");
+	});
 })
 
 
