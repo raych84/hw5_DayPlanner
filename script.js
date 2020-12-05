@@ -1,18 +1,10 @@
-// Global variables
-let time = 0;
-let today = new Date();
-let date = today.getDate();
-let input = document.querySelectorAll("#input");
-let hour = document.querySelectorAll("#hour-block");
-
-
 $(document).ready(function () {
-	$("#save-event").on("click", function (event) {
-		event.preventDefault();
+	$("#save-event").on("click", function () {
 		//Store data
-		var value = $(this).children("input").val();
-		var id = $(this).parent().attr("id")
-		localStorage.setItem(id, value);
+		var value = $(this).siblings("input").val();
+		var time = $(this).parent().attr("id");
+
+		localStorage.setItem(time, value);
 	});
 
 	// Today's date:
@@ -57,8 +49,6 @@ $(document).ready(function () {
 	$("#3p .description").val(localStorage.getItem("3p"));
 	$("#4p .description").val(localStorage.getItem("4p"));
 	$("#5p .description").val(localStorage.getItem("5p"));
-
-	// Save Event button
 
 
 })
