@@ -2,8 +2,6 @@
 let time = 0;
 let today = new Date();
 let date = today.getDate();
-// let input = document.querySelectorAll("#input");
-// let hour = document.querySelectorAll("#hour-block");
 
 
 $(document).ready(function () {
@@ -18,7 +16,6 @@ $(document).ready(function () {
 	// Today's date:
 	document.getElementById("currentDay").innerHTML = today;
 
-	// View hour(s) and any events listed in hour
 
 	// Add an event to each hour
 	function addNewEventToHourBlock() {
